@@ -1,13 +1,13 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-
+import "./globals.css";
 export default function Home() {
   return (
     <main className={styles.main}>
           <table>
       <thead>
         <tr>
-          <th>id</th>
+          <th className={styles.cell}>id</th>
           <th>depto</th>
           <th>caja</th>
           <th>fecha</th>
