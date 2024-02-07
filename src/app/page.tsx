@@ -3,11 +3,11 @@ import styles from "./page.module.css";
 import "./globals.css";
 export default function Home() {
   return (
-    <main className={styles.main}>
+    <main>
           <table>
       <thead>
         <tr>
-          <th className={styles.cell}>id</th>
+          <th>id</th>
           <th>depto</th>
           <th>caja</th>
           <th>fecha</th>
