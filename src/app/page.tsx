@@ -7,23 +7,23 @@ export default function Home() {
           <table>
       <thead>
         <tr>
-          <th>id</th>
-          <th>depto</th>
-          <th>caja</th>
-          <th>fecha</th>
-          <th>empleado_numero</th>
-          <th>empleado_nombre</th>
-          <th>discrepancia</th>
+          <th><h3>id</h3></th>
+          <th><h3>depto</h3></th>
+          <th><h3>caja</h3></th>
+          <th><h3>fecha</h3></th>
+          <th><h3>empleado_numero</h3></th>
+          <th><h3>empleado_nombre</h3></th>
+          <th><h3>discrepancia</h3></th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Dato 1</td>
-          <td>Dato 2</td>
+          <td><h3>Dato 1</h3></td>
+          <td><h3>Dato 2</h3></td>
         </tr>
         <tr>
-          <td>Dato 3</td>
-          <td>Dato 4</td>
+          <td><h3>Dato 3</h3></td>
+          <td><h3>Dato 4</h3></td>
         </tr>
       </tbody>
     </table>
