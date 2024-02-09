@@ -1,7 +1,7 @@
 const fs = require('fs');
 const csv = require('csv-parser');
 const path = require('path');
-const csvFilePath = path.join(__dirname, '..', '..', '..', 'data', 'Template_reset.csv');
+const csvFilePath = path.join(__dirname, '..', '..', 'data', 'Template_reset.csv');
 
 function readCSV() {
   return new Promise((resolve, reject) => {
