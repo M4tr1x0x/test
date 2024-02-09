@@ -1,24 +1,40 @@
 const fs = require('fs');
-const csv = require('csv-parser');
-const path = require('path');
-const csvFilePath = path.join(__dirname, '..', '..', 'data', 'Template_reset.csv');
+const axios = require('axios');
 
-function readCSV() {
-  return new Promise((resolve, reject) => {
-    let localRows = [];
+async function processCSV(url) {
+  try {
+    const response = await axios.get(url);
+    const text = response.data; 
+    const lines = text.split('\n');
 
-    fs.createReadStream(csvFilePath)
-      .pipe(csv())
-      .on('data', (data) => {
-        localRows.push(data);
-      })
-      .on('end', () => {
-        console.log('UwU'); 
-        resolve(localRows); 
-      })
-      .on('error', reject); 
-  });
+    const headers = lines[0].split(',').map(header => header.trim().replace(/^"|"$/g, ''));
+    const data = lines.slice(1).map(line => {
+      const values = line.split(',').map(value => value.trim().replace(/^"|"$/g, '').replace(/\r$/, ''));
+      let obj = {};
+      headers.forEach((header, index) => {
+        obj[header] = values[index] === 'undefined' ? undefined : values[index];
+      });
+      return obj;
+    });
+    return data.filter(obj => obj[headers[0]]); 
+  } catch (error) {
+    console.error('Error:', error);
+    return [];
+  }
 }
+
+async function readCSV() {
+  try {
+    const url = "https://drive.google.com/uc?export=download&id=1ZQ8UrTN0vAWanwLx1wftCcBMaUTQSmKH";
+    const localRows = await processCSV(url);
+    console.log('UwU');
+    return localRows;
+  } catch (error) {
+    console.error('Error al leer el CSV:', error);
+    throw error; 
+  }
+}
+
 
 
 
